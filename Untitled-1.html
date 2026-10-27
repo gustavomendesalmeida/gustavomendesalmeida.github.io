@@ -1,793 +1,929 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Café Aroma | Café de Especialidade</title>
-    <meta
-      name="description"
-      content="Descubra o melhor café artesanal, experiências acolhedoras e uma proposta moderna para saborear momentos únicos."
-    />
-    <style>
-      :root {
-        --bg: #f7f0ea;
-        --bg-strong: #efe3d7;
-        --card: #fffdfb;
-        --card-alt: #f3e6d8;
-        --primary: #6a3f2b;
-        --primary-dark: #452718;
-        --secondary: #d4a373;
-        --accent: #c77b48;
-        --text: #2f2019;
-        --muted: #6d5a50;
-        --line: rgba(76, 53, 40, 0.12);
-        --shadow: 0 20px 45px rgba(65, 42, 30, 0.12);
-        --radius: 22px;
-        --container: 1180px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Aroma | Café de Especialidade</title>
+  <meta name="description" content="Café artesanal, ambiente acolhedor e experiências especiais." />
+  <style>
+    :root {
+      --bg: #f9f2ec;
+      --card: #fffdfb;
+      --card-2: #f2e3d5;
+      --primary: #5d2f1f;
+      --primary-2: #8a4b2d;
+      --accent: #c98a52;
+      --text: #2c1d18;
+      --muted: #685449;
+      --line: rgba(73, 45, 32, 0.12);
+      --shadow: 0 18px 40px rgba(77, 42, 25, 0.12);
+      --radius: 22px;
+      --container: 1180px;
+    }
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
 
-      body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(180deg, #f8f3ee 0%, #f5efe9 100%);
-        color: var(--text);
-        line-height: 1.6;
-      }
+    html {
+      scroll-behavior: smooth;
+    }
 
-      img {
-        max-width: 100%;
-        display: block;
-      }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #faf4ef 0%, #f5efe9 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-      .container {
-        width: min(var(--container), calc(100% - 32px));
-        margin: 0 auto;
-      }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        backdrop-filter: blur(14px);
-        background: rgba(247, 240, 234, 0.82);
-        border-bottom: 1px solid var(--line);
-      }
+    .container {
+      width: min(var(--container), calc(100% - 30px));
+      margin: 0 auto;
+    }
 
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 82px;
-      }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(249, 242, 236, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
 
-      .logo {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        color: var(--primary-dark);
-      }
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-      .logo-mark {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        display: grid;
-        place-items: center;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-        color: #fff;
-        font-size: 1.2rem;
-        box-shadow: var(--shadow);
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(62, 35, 23, 0.12);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+    }
+
+    .btn-secondary {
+      border-color: rgba(93, 47, 31, 0.24);
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .hero {
+      padding: 80px 0 50px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(93, 47, 31, 0.08);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 22px 0 18px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 620px;
+      margin: 0 0 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .visual-card {
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .visual-card img {
+      width: 100%;
+      height: 620px;
+      object-fit: cover;
+    }
+
+    .floating-card {
+      position: absolute;
+      right: -16px;
+      bottom: 24px;
+      width: min(240px, 72%);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(72, 43, 28, 0.08);
+      padding: 18px 18px 14px;
+      box-shadow: 0 16px 32px rgba(52, 31, 20, 0.14);
+      backdrop-filter: blur(10px);
+    }
+
+    .floating-card .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .rating {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .floating-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.2rem;
+    }
+
+    .floating-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-header {
+      margin-bottom: 26px;
+    }
+
+    .section-header small {
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(2rem, 2.8vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+
+    .highlight {
+      color: var(--primary);
+    }
+
+    .menu-grid,
+    .promo-grid,
+    .testimonials-grid,
+    .story-grid,
+    .contact-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .menu-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .promo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .story-grid { grid-template-columns: 1.08fr 0.92fr; align-items: center; }
+    .contact-grid { grid-template-columns: 1.1fr 0.9fr; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(81, 50, 35, 0.03);
+    }
+
+    .menu-item .image-wrap {
+      position: relative;
+      height: 240px;
+    }
+
+    .menu-item .image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tag {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(85, 58, 42, 0.08);
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .menu-item .content {
+      padding: 22px 20px 24px;
+    }
+
+    .menu-item header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .menu-item h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .price {
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 1.12rem;
+    }
+
+    .menu-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .story-image {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+    }
+
+    .story-copy {
+      padding: 10px 8px;
+    }
+
+    .story-copy p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .feature-box {
+      background: var(--card-2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+
+    .feature-box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+
+    .feature-box span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .promo-card {
+      padding: 26px 22px;
+      background: linear-gradient(180deg, #fffaf8 0%, #f8efe7 100%);
+    }
+
+    .promo-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(93, 47, 31, 0.08);
+      font-size: 1.7rem;
+    }
+
+    .promo-card h3 {
+      margin: 18px 0 10px;
+      font-size: 1.4rem;
+    }
+
+    .promo-card p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .testimonial {
+      padding: 24px 22px;
+    }
+
+    .stars {
+      color: #f3b336;
+      letter-spacing: 0.18em;
+      margin-bottom: 12px;
+    }
+
+    .testimonial p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .person strong {
+      display: block;
+    }
+
+    .person span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .contact-panel {
+      padding: 28px 26px;
+      background: linear-gradient(135deg, #f4e7dc 0%, #fffaf7 100%);
+    }
+
+    .contact-panel h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-size: 2rem;
+      letter-spacing: -0.05em;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 12px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(73, 45, 32, 0.08);
+    }
+
+    .info-row span {
+      color: var(--muted);
+    }
+
+    .reserve-box {
+      background: linear-gradient(180deg, #fff 0%, #f8f1ea 100%);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+    }
+
+    .reserve-box h3 {
+      margin: 0 0 18px;
+      font-size: 1.5rem;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid rgba(73, 45, 32, 0.14);
+      border-radius: 12px;
+      font: inherit;
+      background: rgba(255,255,255,0.85);
+      color: var(--text);
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .site-footer {
+      padding: 26px 0 42px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .story-grid,
+      .contact-grid,
+      .menu-grid,
+      .promo-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
       }
 
       .nav-links {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-        color: var(--muted);
-        font-weight: 600;
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        min-height: 72px;
       }
 
-      .nav-links a:hover { color: var(--primary); }
-
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 16px;
+      .nav-actions .btn-secondary {
+        display: none;
       }
 
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        min-height: 48px;
-        padding: 0 22px;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        font-weight: 700;
-        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 14px 26px rgba(81, 49, 36, 0.12);
-      }
-
-      .btn-primary {
-        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-        color: white;
-      }
-
-      .btn-secondary {
-        background: transparent;
-        border-color: rgba(106, 63, 43, 0.2);
-        color: var(--primary-dark);
-      }
-
-      .hero { padding: 74px 0 66px; }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.08fr 0.92fr;
-        gap: 42px;
-        align-items: center;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        padding: 8px 16px;
-        border-radius: 999px;
-        background: rgba(106, 63, 43, 0.08);
-        color: var(--primary);
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        margin: 20px 0 18px;
-        font-size: clamp(2.5rem, 4vw, 5rem);
-        line-height: 0.98;
-        letter-spacing: -0.06em;
-      }
-
-      .lead {
-        margin: 0 0 26px;
-        max-width: 600px;
-        color: var(--muted);
-        font-size: 1.08rem;
+      .hero {
+        padding-top: 60px;
       }
 
       .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px;
-        margin-bottom: 28px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
       }
 
       .hero-metrics {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 22px;
-      }
-
-      .metric { min-width: 140px; }
-
-      .metric strong {
-        display: block;
-        font-size: 1.8rem;
-        color: var(--primary-dark);
-      }
-
-      .metric span { color: var(--muted); font-size: 0.95rem; }
-
-      .hero-visual { position: relative; }
-
-      .visual-card {
-        position: relative;
-        border-radius: 28px;
-        overflow: hidden;
-        background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.02));
-        box-shadow: var(--shadow);
-      }
-
-      .visual-card img {
-        width: 100%;
-        height: 620px;
-        object-fit: cover;
-      }
-
-      .floating-card {
-        position: absolute;
-        right: -18px;
-        bottom: 28px;
-        width: min(240px, 70%);
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(76, 53, 40, 0.08);
-        border-radius: 20px;
-        padding: 18px 18px 14px;
-        box-shadow: 0 18px 30px rgba(85, 58, 42, 0.16);
-      }
-
-      .floating-card .top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 12px;
-        color: var(--muted);
-        font-size: 0.8rem;
-      }
-
-      .rating {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        color: var(--primary-dark);
-        font-weight: 700;
-      }
-
-      .rating span { color: #f3b736; font-size: 1.1rem; }
-
-      .floating-card h3 { margin: 0 0 8px; font-size: 1.2rem; }
-      .floating-card p { margin: 0; color: var(--muted); font-size: 0.9rem; }
-
-      section { padding: 40px 0; }
-
-      .section-header { margin-bottom: 26px; }
-
-      .section-header small {
-        display: inline-block;
-        margin-bottom: 12px;
-        font-size: 0.78rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--primary);
-        font-weight: 700;
-      }
-
-      .section-header h2 {
-        margin: 0;
-        font-size: clamp(2rem, 2.5vw, 3rem);
-        letter-spacing: -0.05em;
-      }
-
-      .highlight { color: var(--primary); }
-
-      .menu-grid,
-      .promo-grid,
-      .story-grid,
-      .testimonials-grid,
-      .contact-grid { display: grid; gap: 24px; }
-
-      .menu-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-
-      .card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        overflow: hidden;
-        box-shadow: 0 14px 30px rgba(87, 62, 48, 0.04);
-      }
-
-      .menu-item .image-wrap { position: relative; height: 240px; }
-      .menu-item .image-wrap img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .tag {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.9);
-        border: 1px solid rgba(76,53,40,0.08);
-        padding: 7px 12px;
-        font-size: 0.76rem;
-        font-weight: 700;
-        color: var(--primary);
-      }
-
-      .menu-item .content { padding: 22px 20px 24px; }
-      .menu-item header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 12px;
-      }
-
-      .menu-item h3 { margin: 0; font-size: 1.3rem; }
-      .price {
-        color: var(--primary);
-        font-weight: 800;
-        font-size: 1.15rem;
-      }
-      .menu-item p { margin: 0; color: var(--muted); }
-
-      .story-grid { grid-template-columns: 1.1fr 0.9fr; align-items: center; }
-      .story-image {
-        border-radius: 28px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-      }
-      .story-image img {
-        width: 100%;
-        height: 560px;
-        object-fit: cover;
-      }
-      .story-copy { padding: 14px 8px; }
-      .story-copy p { color: var(--muted); margin: 0 0 18px; }
-
-      .feature-list {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 26px;
       }
 
-      .feature-box {
-        padding: 16px 18px;
-        border-radius: 18px;
-        background: var(--card-alt);
-        border: 1px solid var(--line);
+      .feature-list {
+        grid-template-columns: 1fr;
       }
 
-      .feature-box strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--primary-dark);
-      }
-
-      .feature-box span { color: var(--muted); font-size: 0.96rem; }
-
-      .promo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .promo-card { padding: 26px 22px; background: linear-gradient(180deg, #fffaf8 0%, #f9efe8 100%); }
-      .promo-icon {
-        width: 62px;
-        height: 62px;
-        display: grid;
-        place-items: center;
-        background: rgba(106, 63, 43, 0.08);
-        border-radius: 18px;
-        font-size: 1.7rem;
-      }
-      .promo-card h3 { margin: 18px 0 10px; font-size: 1.4rem; }
-      .promo-card p { margin: 0 0 18px; color: var(--muted); }
-
-      .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .testimonial { padding: 24px 22px; }
-      .stars { color: #f3b736; letter-spacing: 0.18em; margin-bottom: 12px; }
-      .testimonial p { margin: 0 0 18px; color: var(--muted); }
-
-      .person { display: flex; align-items: center; gap: 12px; }
-      .avatar {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-      .person strong { display: block; }
-      .person span { color: var(--muted); font-size: 0.9rem; }
-
-      .reservation { padding-top: 10px; }
-      .contact-grid { grid-template-columns: 1.1fr 0.9fr; align-items: stretch; }
-      .contact-panel {
-        padding: 28px 26px;
-        background: linear-gradient(135deg, #f3e7dc 0%, #fffaf7 100%);
-      }
-      .contact-panel h3 {
-        margin-top: 0;
-        margin-bottom: 10px;
-        font-size: 2rem;
-        letter-spacing: -0.05em;
-      }
-      .contact-panel p { margin: 0 0 20px; color: var(--muted); }
-      .contact-info { display: grid; gap: 14px; }
-      .info-row {
-        display: flex;
-        justify-content: space-between;
-        gap: 14px;
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(76, 53, 40, 0.08);
-      }
-      .info-row span { color: var(--muted); }
-      .info-row strong { color: var(--primary-dark); }
-
-      .reserve-box {
-        background: linear-gradient(180deg, #fff 0%, #f9f3ef 100%);
-        border-radius: var(--radius);
-        padding: 30px 24px;
-        border: 1px solid var(--line);
-      }
-      .reserve-box h3 { margin: 0 0 18px; font-size: 1.5rem; }
-
-      form { display: grid; gap: 14px; }
-      .field { display: grid; gap: 6px; }
-      .field label { color: var(--muted); font-weight: 700; }
-      .field input,
-      .field select,
-      .field textarea {
-        width: 100%;
-        border: 1px solid rgba(76, 53, 40, 0.14);
-        background: rgba(255,255,255,0.8);
-        border-radius: 12px;
-        padding: 12px 14px;
-        font: inherit;
-        color: var(--text);
-      }
-      .field textarea { min-height: 110px; resize: vertical; }
-
-      .site-footer {
-        padding: 26px 0 42px;
-        color: var(--muted);
-      }
       .footer-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 16px;
-        padding-top: 20px;
-        border-top: 1px solid var(--line);
+        flex-direction: column;
+        text-align: center;
       }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="logo" aria-label="Página inicial Café Aroma">
+        <span class="logo-mark">☕</span>
+        <span>Café Aroma</span>
+      </a>
 
-      @media (max-width: 980px) {
-        .hero-grid,
-        .story-grid,
-        .contact-grid,
-        .menu-grid,
-        .promo-grid,
-        .testimonials-grid { grid-template-columns: 1fr; }
-        .nav-links { display: none; }
-        .hero { padding-top: 50px; }
-      }
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#menu">Menu</a>
+        <a href="#historia">Nossa História</a>
+        <a href="#promocoes">Promoções</a>
+        <a href="#avaliacoes">Avaliações</a>
+        <a href="#reservas">Reservas</a>
+      </nav>
 
-      @media (max-width: 640px) {
-        .nav { min-height: 70px; }
-        .nav-actions .btn-secondary { display: none; }
-        .hero-actions { flex-direction: column; align-items: stretch; }
-        .btn { width: 100%; }
-        .hero-metrics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .feature-list { grid-template-columns: 1fr; }
-        .footer-inner { flex-direction: column; text-align: center; }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav">
-        <a href="#top" class="logo" aria-label="Página inicial Café Aroma">
-          <span class="logo-mark">☕</span>
-          <span>Café Aroma</span>
-        </a>
+      <div class="nav-actions">
+        <a href="#reservas" class="btn btn-secondary">Reservar Mesa</a>
+        <a href="#menu" class="btn btn-primary">Peça Agora</a>
+      </div>
+    </div>
+  </header>
 
-        <nav class="nav-links" aria-label="Navegação principal">
-          <a href="#menu">Menu</a>
-          <a href="#historia">Nossa História</a>
-          <a href="#promocoes">Promoções</a>
-          <a href="#avaliacoes">Avaliações</a>
-          <a href="#reservas">Reservas</a>
-        </nav>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Café de Especialidade</span>
+          <h1>O sabor que<br />aconchega o dia.</h1>
+          <p class="lead">
+            Um café pensado para transformar momentos comuns em experiências memoráveis,
+            com grãos selecionados, ambiente acolhedor e sabores preparados com cuidado.
+          </p>
 
-        <div class="nav-actions">
-          <a href="#reservas" class="btn btn-secondary">Reservar Mesa</a>
-          <a href="#menu" class="btn btn-primary">Peça Agora</a>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">Conheça o Menu</a>
+            <a href="#historia" class="btn btn-secondary">Nossa História</a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong>12k+</strong>
+              <span>Clientes felizes</span>
+            </div>
+            <div class="metric">
+              <strong>5 anos</strong>
+              <span>de tradição</span>
+            </div>
+            <div class="metric">
+              <strong>18</strong>
+              <span>sabores especiais</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80" alt="Café com mesa e ambiente acolhedor" />
+          </div>
+
+          <div class="floating-card">
+            <div class="top">
+              <span>Clientes</span>
+              <span class="rating">★ 4.9</span>
+            </div>
+            <h3>Vibe do Café</h3>
+            <p>Ambiente acolhedor, música suave e café com identidade artesanal.</p>
+          </div>
         </div>
       </div>
-    </header>
+    </section>
 
-    <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <span class="eyebrow">Café de Especialidade</span>
-            <h1>O sabor que<br />aconchega o dia.</h1>
-            <p class="lead">
-              Uma experiência de café pensada para transformar cada encontro em um momento memorável,
-              com grãos selecionados, ambiente acolhedor e sabores cuidadosamente preparados.
-            </p>
-
-            <div class="hero-actions">
-              <a href="#menu" class="btn btn-primary">Conheça o Menu</a>
-              <a href="#historia" class="btn btn-secondary">Nossa História</a>
-            </div>
-
-            <div class="hero-metrics" aria-label="estatísticas do café">
-              <div class="metric">
-                <strong>12k+</strong>
-                <span>Clientes felizes</span>
-              </div>
-              <div class="metric">
-                <strong>5 anos</strong>
-                <span>de paixão pelo café</span>
-              </div>
-              <div class="metric">
-                <strong>18</strong>
-                <span>tipos especiais</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-visual" aria-label="Imagem de uma xícara de café e ambiente acolhedor">
-            <div class="visual-card">
-              <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80" alt="Café servido em uma mesa rústica com ambiente elegante e acolhedor" />
-            </div>
-
-            <div class="floating-card">
-              <div class="top">
-                <span>Clientes</span>
-                <span class="rating"><span>★</span> 4.9</span>
-              </div>
-              <h3>Vibe do Café</h3>
-              <p>Ambiente acolhedor, música suave e café com identidade artesanal.</p>
-            </div>
-          </div>
+    <section id="menu">
+      <div class="container">
+        <div class="section-header">
+          <small>Cardápio</small>
+          <h2>Sabores que <span class="highlight">encantam</span></h2>
         </div>
-      </section>
 
-      <section id="menu">
-        <div class="container">
-          <div class="section-header">
-            <small>Cardápio</small>
-            <h2>Sabores que <span class="highlight">encantam</span></h2>
-          </div>
-
-          <div class="menu-grid">
-            <article class="card menu-item">
-              <div class="image-wrap">
-                <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=800&q=80" alt="Café espresso servido em xícara preta" />
-                <span class="tag">Popular</span>
-              </div>
-              <div class="content">
-                <header>
-                  <h3>Espresso</h3>
-                  <span class="price">R$ 12</span>
-                </header>
-                <p>Intenso, encorpado e perfeito para quem gosta de um café com personalidade marcante.</p>
-              </div>
-            </article>
-
-            <article class="card menu-item">
-              <div class="image-wrap">
-                <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80" alt="Café com leite em copo com espuma e canela" />
-                <span class="tag">Especial</span>
-              </div>
-              <div class="content">
-                <header>
-                  <h3>Latte</h3>
-                  <span class="price">R$ 18</span>
-                </header>
-                <p>Creme suave, aroma equilibrado e a textura que transforma o café em uma pausa refinada.</p>
-              </div>
-            </article>
-
-            <article class="card menu-item">
-              <div class="image-wrap">
-                <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80" alt="Café frio com gelo em vidro e frutas na mesa" />
-                <span class="tag">Novo</span>
-              </div>
-              <div class="content">
-                <header>
-                  <h3>Cold Brew</h3>
-                  <span class="price">R$ 16</span>
-                </header>
-                <p>Refrescante, com sabor mais suave e notas suaves de chocolate e caramelo.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="historia">
-        <div class="container story-grid">
-          <div class="story-image">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Interior de um café com mesas, plantas e pessoas conversando" />
-          </div>
-
-          <div class="story-copy">
-            <div class="section-header">
-              <small>Quem somos</small>
-              <h2>Uma história de <span class="highlight">café</span> e acolhimento</h2>
+        <div class="menu-grid">
+          <article class="card menu-item">
+            <div class="image-wrap">
+              <img src="https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=800&q=80" alt="Café espresso em xícara preta" />
+              <span class="tag">Popular</span>
             </div>
-
-            <p>
-              Nascemos com a missão de oferecer uma experiência mais do que sabor: um ambiente onde cada xícara
-              conta uma história, cada grão tem origem e cada atendimento é feito com atenção e carinho.
-            </p>
-            <p>
-              Trabalhamos com grãos selecionados de origem responsável, produtos artesanais e um espaço pensado para
-              receber pessoas que valorizam momentos de calma, conversa e conexão.
-            </p>
-
-            <div class="feature-list">
-              <div class="feature-box">
-                <strong>Grãos especiais</strong>
-                <span>Seleção cuidadosa e torra em pequena escala.</span>
-              </div>
-              <div class="feature-box">
-                <strong>Ambiente acolhedor</strong>
-                <span>Design confortável para reuniões, pausas e lazer.</span>
-              </div>
-              <div class="feature-box">
-                <strong>Origem consciente</strong>
-                <span>Parcerias com produtores e práticas responsáveis.</span>
-              </div>
-              <div class="feature-box">
-                <strong>Atendimento premium</strong>
-                <span>Serviço dedicado para surpreender em cada visita.</span>
-              </div>
+            <div class="content">
+              <header>
+                <h3>Espresso</h3>
+                <span class="price">R$ 12</span>
+              </header>
+              <p>Intenso, encorpado e perfeito para quem gosta de café marcante.</p>
             </div>
-          </div>
-        </div>
-      </section>
+          </article>
 
-      <section id="promocoes">
-        <div class="container">
-          <div class="section-header">
-            <small>Vantagens</small>
-            <h2>Experiência que <span class="highlight">vale a pena repetir</span></h2>
-          </div>
-
-          <div class="promo-grid">
-            <article class="card promo-card">
-              <div class="promo-icon">☕</div>
-              <h3>Menu de especialidades</h3>
-              <p>Descubra combinações exclusivas, receitas artesanais e sabores cuidadosamente criados para surpreender.</p>
-              <a href="#menu" class="btn btn-secondary">Ver opções</a>
-            </article>
-
-            <article class="card promo-card">
-              <div class="promo-icon">🎉</div>
-              <h3>Promoções semanais</h3>
-              <p>Ofertas especiais com cafés premium, sobremesas e combos para aproveitar o melhor da nossa casa.</p>
-              <a href="#reservas" class="btn btn-secondary">Reservar agora</a>
-            </article>
-
-            <article class="card promo-card">
-              <div class="promo-icon">📍</div>
-              <h3>Local perfeito</h3>
-              <p>Um ambiente pensado para encontros, trabalho criativo, leitura e momentos de descontração.</p>
-              <a href="#reservas" class="btn btn-secondary">Conhecer o espaço</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="avaliacoes">
-        <div class="container">
-          <div class="section-header">
-            <small>Clientes</small>
-            <h2>O que nossos clientes dizem</h2>
-          </div>
-
-          <div class="testimonials-grid">
-            <article class="card testimonial">
-              <div class="stars">★★★★★</div>
-              <p>“O ambiente é incrível, o café tem sabor excepcional e o atendimento deixa qualquer visita especial.”</p>
-              <div class="person">
-                <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="Retrato de cliente Ana" />
-                <div>
-                  <strong>Ana L.</strong>
-                  <span>Cliente frequente</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="card testimonial">
-              <div class="stars">★★★★★</div>
-              <p>“O melhor lugar para relaxar e tomar um café de qualidade. A estética e a música fazem a diferença.”</p>
-              <div class="person">
-                <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Retrato de cliente Lucas" />
-                <div>
-                  <strong>Lucas P.</strong>
-                  <span>Especialista em café</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="card testimonial">
-              <div class="stars">★★★★★</div>
-              <p>“Não é só café: é uma experiência. A variedade do cardápio e a decoração deixam o lugar muito acolhedor.”</p>
-              <div class="person">
-                <img class="avatar" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&q=80" alt="Retrato de cliente Mariana" />
-                <div>
-                  <strong>Mariana S.</strong>
-                  <span>Amante de café</span>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="reservas" class="reservation">
-        <div class="container contact-grid">
-          <div class="card contact-panel">
-            <small class="eyebrow">Reservas & contato</small>
-            <h3>Venha nos visitar.</h3>
-            <p>
-              Reserve sua mesa, agende um atendimento especial ou venha conhecer o ambiente que combina café, conforto e design.
-            </p>
-
-            <div class="contact-info" aria-label="Informações de contato">
-              <div class="info-row">
-                <span>Endereço</span>
-                <strong>Rua do Café, 245 - Centro</strong>
-              </div>
-              <div class="info-row">
-                <span>Horário</span>
-                <strong>Seg a Dom · 08h às 22h</strong>
-              </div>
-              <div class="info-row">
-                <span>Telefone</span>
-                <strong>(11) 3456-7890</strong>
-              </div>
-              <div class="info-row">
-                <span>Email</span>
-                <strong>contato@cafearoma.com.br</strong>
-              </div>
+          <article class="card menu-item">
+            <div class="image-wrap">
+              <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=800&q=80" alt="Café com leite em xícara" />
+              <span class="tag">Especial</span>
             </div>
-          </div>
+            <div class="content">
+              <header>
+                <h3>Latte</h3>
+                <span class="price">R$ 18</span>
+              </header>
+              <p>Creme suave, aroma equilibrado e textura que conquista.</p>
+            </div>
+          </article>
 
-          <div class="reserve-box">
-            <h3>Faça sua reserva</h3>
-            <form>
-              <div class="field">
-                <label for="nome">Nome</label>
-                <input id="nome" type="text" placeholder="Seu nome" />
-              </div>
-
-              <div class="field">
-                <label for="data">Data</label>
-                <input id="data" type="date" />
-              </div>
-
-              <div class="field">
-                <label for="pessoas">Pessoas</label>
-                <select id="pessoas">
-                  <option>2 pessoas</option>
-                  <option>4 pessoas</option>
-                  <option>6 pessoas</option>
-                  <option>Grupo</option>
-                </select>
-              </div>
-
-              <div class="field">
-                <label for="mensagem">Mensagem</label>
-                <textarea id="mensagem" placeholder="Observações ou pedido especial"></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
-            </form>
-          </div>
+          <article class="card menu-item">
+            <div class="image-wrap">
+              <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80" alt="Café gelado em copo" />
+              <span class="tag">Novo</span>
+            </div>
+            <div class="content">
+              <header>
+                <h3>Cold Brew</h3>
+                <span class="price">R$ 16</span>
+              </header>
+              <p>Refrescante, suave e com notas de chocolate e caramelo.</p>
+            </div>
+          </article>
         </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div class="logo">
-          <span class="logo-mark">☕</span>
-          <span>Café Aroma</span>
-        </div>
-        <span>© 2026 Café Aroma. Feito para momentos especiais.</span>
       </div>
-    </footer>
-  </body>
+    </section>
+
+    <section id="historia">
+      <div class="container story-grid">
+        <div class="story-image">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Café com ambiente acolhedor" />
+        </div>
+
+        <div class="story-copy">
+          <div class="section-header">
+            <small>Quem somos</small>
+            <h2>Uma história de <span class="highlight">café</span> e acolhimento</h2>
+          </div>
+
+          <p>
+            Nascemos com a missão de oferecer uma experiência mais do que sabor: um ambiente onde cada xícara conta uma história,
+            cada grão tem origem e cada atendimento é feito com atenção e carinho.
+          </p>
+          <p>
+            Trabalhamos com grãos selecionados de origem responsável, produtos artesanais e um espaço pensado para receber pessoas
+            que valorizam momentos de calma, conversa e conexão.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-box">
+              <strong>Grãos especiais</strong>
+              <span>Seleção cuidadosa e torra em pequena escala.</span>
+            </div>
+            <div class="feature-box">
+              <strong>Ambiente acolhedor</strong>
+              <span>Design confortável para reuniões e pausas.</span>
+            </div>
+            <div class="feature-box">
+              <strong>Origem consciente</strong>
+              <span>Parcerias com produtores responsáveis.</span>
+            </div>
+            <div class="feature-box">
+              <strong>Atendimento premium</strong>
+              <span>Serviço dedicado para surpreender em cada visita.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promocoes">
+      <div class="container">
+        <div class="section-header">
+          <small>Vantagens</small>
+          <h2>Experiência que <span class="highlight">vale a pena repetir</span></h2>
+        </div>
+
+        <div class="promo-grid">
+          <article class="card promo-card">
+            <div class="promo-icon">☕</div>
+            <h3>Menu de especialidades</h3>
+            <p>Descubra combinações exclusivas e sabores cuidadosamente criados para surpreender.</p>
+            <a href="#menu" class="btn btn-secondary">Ver opções</a>
+          </article>
+
+          <article class="card promo-card">
+            <div class="promo-icon">🎉</div>
+            <h3>Promoções semanais</h3>
+            <p>Ofertas especiais com cafés premium, sobremesas e combos para aproveitar melhor.</p>
+            <a href="#reservas" class="btn btn-secondary">Reservar agora</a>
+          </article>
+
+          <article class="card promo-card">
+            <div class="promo-icon">📍</div>
+            <h3>Local perfeito</h3>
+            <p>Ambiente pensado para encontros, trabalho criativo, leitura e descontração.</p>
+            <a href="#reservas" class="btn btn-secondary">Conhecer o espaço</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="avaliacoes">
+      <div class="container">
+        <div class="section-header">
+          <small>Clientes</small>
+          <h2>O que nossos clientes dizem</h2>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="card testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“O ambiente é incrível, o café tem sabor excepcional e o atendimento deixa qualquer visita especial.”</p>
+            <div class="person">
+              <img class="avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80" alt="Cliente Ana" />
+              <div>
+                <strong>Ana L.</strong>
+                <span>Cliente frequente</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“O melhor lugar para relaxar e tomar um café de qualidade. A estética e a música fazem a diferença.”</p>
+            <div class="person">
+              <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Cliente Lucas" />
+              <div>
+                <strong>Lucas P.</strong>
+                <span>Especialista em café</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“Não é só café: é uma experiência. A variedade do cardápio e a decoração deixam o lugar acolhedor.”</p>
+            <div class="person">
+              <img class="avatar" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=300&q=80" alt="Cliente Mariana" />
+              <div>
+                <strong>Mariana S.</strong>
+                <span>Amante de café</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservas" class="reservation">
+      <div class="container contact-grid">
+        <div class="card contact-panel">
+          <small class="eyebrow">Reservas & contato</small>
+          <h3>Venha nos visitar.</h3>
+          <p>
+            Reserve sua mesa, agende um atendimento especial ou venha conhecer o ambiente que combina café, conforto e design.
+          </p>
+
+          <div class="contact-info">
+            <div class="info-row">
+              <span>Endereço</span>
+              <strong>Rua do Café, 245 - Centro</strong>
+            </div>
+            <div class="info-row">
+              <span>Horário</span>
+              <strong>Seg a Dom · 08h às 22h</strong>
+            </div>
+            <div class="info-row">
+              <span>Telefone</span>
+              <strong>(11) 3456-7890</strong>
+            </div>
+            <div class="info-row">
+              <span>Email</span>
+              <strong>contato@cafearoma.com.br</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="reserve-box">
+          <h3>Faça sua reserva</h3>
+          <form>
+            <div class="field">
+              <label for="nome">Nome</label>
+              <input id="nome" type="text" placeholder="Seu nome" />
+            </div>
+
+            <div class="field">
+              <label for="data">Data</label>
+              <input id="data" type="date" />
+            </div>
+
+            <div class="field">
+              <label for="pessoas">Pessoas</label>
+              <select id="pessoas">
+                <option>2 pessoas</option>
+                <option>4 pessoas</option>
+                <option>6 pessoas</option>
+                <option>Grupo</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" placeholder="Observações ou pedido especial"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="logo">
+        <span class="logo-mark">☕</span>
+        <span>Café Aroma</span>
+      </div>
+      <span>© 2026 Café Aroma. Feito para momentos especiais.</span>
+    </div>
+  </footer>
+</body>
 </html>
